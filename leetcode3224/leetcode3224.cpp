@@ -2,7 +2,7 @@
 //
 
 
-// NOT WORKING
+// NOT WORKING (TIME LIMIT EXCEEDED)
 
 //You are given an integer array nums of size n where n is even, and an integer k.
 //
@@ -25,22 +25,44 @@
 
 class Solution {
 public:
-	int countChanges(const std::pair<int, int>& pair, int X) {
-		int diff = std::abs(pair.first - pair.second);
-		if (diff == X) { return 0; }
-		bool first_bigger = pair.first >= pair.second ? true : false;
-		if (first_bigger) {
-			if (pair.first - X + diff < 0 && pair.second + X - diff > m_k) {
-				return 2;
-			}
-		}
-		else {
-			if (pair.first + X - diff > m_k && pair.second - X + diff < 0) {
-				return 2;
-			}
-		}
-		return 1;
-	}
+    int countChanges(const std::pair<int, int>& p, int X) {
+        int a = p.first, b = p.second;
+        int diff = std::abs(a - b);
+
+        // 0 changes if already X
+        if (diff == X) {
+            return 0;
+        }
+
+        // Check if 1 change is possible
+        //
+        //   c = b + X
+        //   c = b - X
+        //   c = a + X
+        //   c = a - X
+        //
+        // and each c must be in [0, m_k].
+        bool canOneChange = false;
+
+        // c = b + X
+        if ((b + X) >= 0 && (b + X) <= m_k) {
+            canOneChange = true;
+        }
+        // c = b - X
+        if ((b - X) >= 0 && (b - X) <= m_k) {
+            canOneChange = true;
+        }
+        // c = a + X
+        if ((a + X) >= 0 && (a + X) <= m_k) {
+            canOneChange = true;
+        }
+        // c = a - X
+        if ((a - X) >= 0 && (a - X) <= m_k) {
+            canOneChange = true;
+        }
+
+        return canOneChange ? 1 : 2;
+    }
 
 	int minChanges(std::vector<int>& nums, int k) {
 		m_k = k;
