@@ -71,6 +71,7 @@ public:
 	// -> bpp = 8
 	// -> horizontal and vertical res = 20 pixels/m
 	// -> full palette
+	// -> grayscale palette
 	// and more
 	Bitmap(int32_t image_width, int32_t image_height) :
 		m_colour_planes(1), m_bits_per_pix(8), m_compress_type(0), m_horizontal_res(20), 
@@ -83,6 +84,17 @@ public:
 		m_pix_arr_offset = 14 + 40 + getPaletteSize();
 		m_image_size = m_pix_arr.getByteSize();
 		m_file_size = m_pix_arr_offset + m_image_size;
+
+		uint32_t num_colours = getNumPaletteColours();
+		m_palette = std::make_unique<uint8_t[]>(getPaletteSize());
+
+		for (uint32_t i = 0; i < num_colours; i++) {
+			uint32_t offset = i * 4;
+			m_palette[offset] = static_cast<uint8_t>(i); // Red
+			m_palette[offset + 1] = static_cast<uint8_t>(i); // Blue
+			m_palette[offset + 2] = static_cast<uint8_t>(i); // Green
+			m_palette[offset + 3] = 0; // Reserved
+		}
 	}
 
 	uint32_t getNumPaletteColours() {
