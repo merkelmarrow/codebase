@@ -105,9 +105,9 @@ public:
 
 		for (uint32_t i = 0; i < num_colours; i++) {
 			uint32_t offset = i * 4;
-			m_palette[offset] = static_cast<uint8_t>(i); // Red
-			m_palette[offset + 1] = static_cast<uint8_t>(i); // Blue
-			m_palette[offset + 2] = static_cast<uint8_t>(i); // Green
+			m_palette[offset] = static_cast<uint8_t>(i); // Blue
+			m_palette[offset + 1] = static_cast<uint8_t>(i); // Green
+			m_palette[offset + 2] = static_cast<uint8_t>(i); // Red
 			m_palette[offset + 3] = 0; // Reserved
 		}
 	}
