@@ -94,8 +94,8 @@ public:
 		m_important_colours(0), m_pix_arr(PixArr(image_width, image_height)),
 		m_reserved_1(0), m_reserved_2(0) {
 
-		const uint32_t file_header_size = 14; // FILEHEADER = 14
-		const uint32_t dib_header_size = 40; // BITMAPINFOHEADER = 40
+		// file_header_size = 14
+		// dib_header_size = 40
 		m_pix_arr_offset = 14 + 40 + getPaletteSize();
 		m_image_size = m_pix_arr.getByteSize();
 		m_file_size = m_pix_arr_offset + m_image_size;
