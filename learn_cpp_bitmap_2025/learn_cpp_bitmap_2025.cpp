@@ -7,7 +7,7 @@ using std::uint32_t;
 
 class PixArr {
 private:
-	std::unique_ptr<uint16_t[]> m_pix_arr;
+	std::unique_ptr<uint8_t[]> m_pix_arr;
 	uint16_t m_padding;
 
 public:
@@ -15,7 +15,7 @@ public:
 		uint32_t total_width{ image_width % 4 == 0 ? 
 			image_width : image_width - (image_width % 4) + 4};
 		m_padding = static_cast<uint16_t>(total_width - image_width);
-		m_pix_arr = std::make_unique<uint16_t[]>((total_width / 8) * image_height);
+		m_pix_arr = std::make_unique<uint8_t[]>(total_width * image_height);
 	}
 };
 
