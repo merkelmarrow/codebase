@@ -71,7 +71,7 @@ private:
 	uint32_t m_image_size;
 	uint32_t m_horizontal_res;
 	uint32_t m_vertical_res;
-	uint32_t m_pallete_colours;
+	uint32_t m_palette_colours;
 	uint32_t m_important_colours;
 
 	// Colour table
@@ -90,7 +90,7 @@ public:
 	// and more
 	Bitmap(int32_t image_width, int32_t image_height) :
 		m_colour_planes(1), m_bits_per_pix(8), m_compress_type(0), m_horizontal_res(20),
-		m_vertical_res(20), m_dib_header_size(40), m_pallete_colours(0),
+		m_vertical_res(20), m_dib_header_size(40), m_palette_colours(0),
 		m_important_colours(0), m_pix_arr(PixArr(image_width, image_height)),
 		m_reserved_1(0), m_reserved_2(0) {
 
@@ -113,9 +113,9 @@ public:
 	}
 
 	uint32_t getNumPaletteColours() {
-		if (m_bits_per_pix <= 8 && m_pallete_colours == 0)
+		if (m_bits_per_pix <= 8 && m_palette_colours == 0)
 			return static_cast<uint16_t> (std::pow(2, m_bits_per_pix));
-		else return m_pallete_colours;
+		else return m_palette_colours;
 	}
 
 	inline uint32_t getPaletteSize() {
