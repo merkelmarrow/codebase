@@ -124,8 +124,11 @@ public:
 
 	// returns index of 8bpp greyscale palette given percent input
 	// where input 100.0 is white and 0.0 is black
-	inline uint32_t grayScalePrctToIndex(const float percentage) {
-		return static_cast<uint32_t>(getNumPaletteColours() * percentage / 100);
+	inline uint32_t grayScalePrctToIndex(float percentage) {
+		if (percentage < 0.0) percentage = 0.0;
+		if (percentage > 100.0) percentage = 100.0;
+		uint32_t idx = static_cast<uint32_t>(getNumPaletteColours() * percentage / 100);
+		return idx >= getNumPaletteColours() ? getNumPaletteColours() - 1 : idx;
 	}
 
 	// works with 8bpp only
