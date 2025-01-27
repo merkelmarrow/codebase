@@ -1,6 +1,0 @@
-{
-  "dependencies": [
-    "nlohmann-json",
-    "tiny-process-library"
-  ]
-}
