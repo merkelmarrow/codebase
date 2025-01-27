@@ -54,14 +54,17 @@ private:
 
 	// File header
 	uint32_t m_file_size;
-	uint16_t m_reserved_1;
-	uint16_t m_reserved_2;
+	
+	// THE TWO BELOW ARE PART OF FILEHEADER BUT DON'T NEED TO BE STORED
+	// uint16_t m_reserved_1;
+	// uint16_t m_reserved_2;
+	
 	uint32_t m_pix_arr_offset;
 
 	// DIB header (BITMAPINFOHEADER)
 	uint32_t m_dib_header_size;
 
-	// THE BELOW ARE STORED IN PixArr OBJECT
+	// THE TWO BELOW ARE STORED IN PixArr OBJECT
 	// int32_t m_image_width;
 	// int32_t m_image_height;
 

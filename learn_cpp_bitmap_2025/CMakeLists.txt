@@ -12,7 +12,7 @@ endif()
 project ("learn_cpp_bitmap_2025")
 
 # Add source to this project's executable.
-add_executable (learn_cpp_bitmap_2025 "learn_cpp_bitmap_2025.cpp" "learn_cpp_bitmap_2025.h")
+add_executable (learn_cpp_bitmap_2025 "learn_cpp_bitmap_2025.cpp" "learn_cpp_bitmap_2025.h" )
 
 if (CMAKE_VERSION VERSION_GREATER 3.12)
   set_property(TARGET learn_cpp_bitmap_2025 PROPERTY CXX_STANDARD 20)
